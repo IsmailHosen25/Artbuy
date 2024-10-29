@@ -1,0 +1,92 @@
+.nav{
+    width: 100%;
+}
+.nav_desing{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+.nave_name_desing{
+    margin-left: 10%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:#DCB855;
+}
+
+.nave_name_icon{
+    color:#DCB855;
+    font-size: 3rem;
+}
+.cart_icon{
+    margin-right: 10%;
+    width: 60px;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: #FF8205;
+    border-radius: 6px;
+}
+.nav_manu{
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border-bottom: 1px solid #36BDD7;
+}
+.store_icon{
+    font-size: 2.5rem;
+    color: #36BDD7;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.profile_icon{
+    font-size: 2.5rem;
+    color: #36BDD7;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.account{
+    font-size: 2rem;
+    color: #36BDD7;
+    margin-right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+@media screen and (max-width: 480px){
+    .nave_name_desing{
+        font-size: 1.8rem;
+    }
+    
+    .nave_name_icon{
+        font-size: 2.5rem;
+    }
+    .store_icon{
+        font-size: 2rem;
+    }
+    .profile_icon{
+        font-size: 2rem;
+    }
+    .account{
+        font-size: 1.8rem;
+    }
+    .cart_icon{
+        width: 60px;
+        font-size: 2.3rem;
+    }
+}
