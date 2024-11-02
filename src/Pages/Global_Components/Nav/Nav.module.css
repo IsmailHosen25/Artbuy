@@ -68,6 +68,9 @@
     align-items: center;
     gap: 0.5rem;
 }
+.login_signup{
+    cursor: pointer;
+}
 @media screen and (max-width: 480px){
     .nave_name_desing{
         font-size: 1.8rem;

@@ -1,13 +1,21 @@
 import styles from "./Nav.module.css"
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import { ImProfile } from "react-icons/im";
 import { FaStore } from "react-icons/fa";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { GiPencil } from "react-icons/gi";
 import { PiShoppingCartFill } from "react-icons/pi";
 export default function Nav() {
-  const [login,setlogin]=useState(false)
+  const navigate =useNavigate()
+  const [login,setlogin]=useState(true)
   const [cartvalue,setcartvalue]=useState(0)
+  const LoginHandle=()=>{
+    navigate("/login")
+  }
+  const SignupHandle=()=>{
+    navigate("/signup")
+  }
   return (<div className={styles.nav}>
     <div className={styles.nav_desing}>
        <div className={styles.nave_name_desing}>
@@ -29,10 +37,10 @@ export default function Nav() {
       </div>
       :
       <div className={styles.account}>
-        <div>Login</div>
+        <div onClick={LoginHandle} className={styles.login_signup}>Login</div>
         <div>/</div>
-        <div>Sign Up</div>
-        <MdOutlineAccountCircle/>
+        <div onClick={SignupHandle} className={styles.login_signup}>Sign Up</div>
+        <MdOutlineAccountCircle onClick={navigate("/profile")} className={styles.login_signup}/>
       </div>
       }
 

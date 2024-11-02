@@ -1,9 +1,15 @@
-import Nav from "../Global_Components/Nav/Nav"
 import ProductsCard from "../Global_Components/ProductsCard/ProductsCard"
 import styles from "./Home.module.css"
 import React from 'react'
 import img from "../../assets/art_img.jpg"
 const card_datas=[{
+  "img":img,
+  "like":2300,
+  "price":790,
+  "available":"Available",
+  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
+},
+  {
   "img":img,
   "like":999,
   "price":250,
@@ -31,7 +37,6 @@ const card_datas=[{
 export default function Home() {
   return (
     <div className={styles.hello}>
-      <Nav/>
       <div className={styles.store}>
         {
           card_datas.map((item,i)=><ProductsCard card_data={item}/>
