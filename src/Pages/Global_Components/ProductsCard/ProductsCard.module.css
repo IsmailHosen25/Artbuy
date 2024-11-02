@@ -7,6 +7,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    overflow: hidden;
 }
 .img_div{
     width: 100%;
@@ -48,10 +49,12 @@
     
 }
 .love_icon{
+    font-size: 2rem;
     color: red;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .love_status{
     font-size: 1.8rem;
@@ -88,6 +91,7 @@
    color: #fff;
    font-size: 2rem;
    padding: 0.3rem 0rem;
+   cursor: pointer;
 }
 .cart_btn{
     width: 50%;
@@ -96,6 +100,7 @@
     color: #fff;
     font-size: 2rem;
     padding: 0.3rem 0rem;
+    cursor: pointer;
 }
 .cart_detiels{
     font-size: 1.5rem;
