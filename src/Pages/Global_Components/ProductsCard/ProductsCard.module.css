@@ -3,7 +3,7 @@
     border: 2px solid #E2BA55;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.3rem;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -14,6 +14,11 @@
 }
 .img{
     width: 100%;
+}
+.card_name{
+    width: 100%;
+    font-size: 1.5rem;
+    color: #000;
 }
 .card_bio{
     width: 100%;
@@ -27,6 +32,7 @@
 .card_pricing_buying{
     width: 100%;
     display: flex;
+    gap: 0.5rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;

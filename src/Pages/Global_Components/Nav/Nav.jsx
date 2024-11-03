@@ -8,7 +8,7 @@ import { GiPencil } from "react-icons/gi";
 import { PiShoppingCartFill } from "react-icons/pi";
 export default function Nav() {
   const navigate =useNavigate()
-  const [login,setlogin]=useState(true)
+  const [login,setlogin]=useState(false)
   const [cartvalue,setcartvalue]=useState(0)
   const LoginHandle=()=>{
     navigate("/login")
@@ -25,7 +25,7 @@ export default function Nav() {
        <div className={styles.cart_icon}><PiShoppingCartFill/> {cartvalue}</div>
     </div>
     <div className={styles.nav_manu}>
-      <div className={styles.store_icon}>
+      <div className={styles.store_icon} onClick={navigate("/")}>
         <FaStore/> Store
       </div>
 
@@ -40,7 +40,7 @@ export default function Nav() {
         <div onClick={LoginHandle} className={styles.login_signup}>Login</div>
         <div>/</div>
         <div onClick={SignupHandle} className={styles.login_signup}>Sign Up</div>
-        <MdOutlineAccountCircle onClick={navigate("/profile")} className={styles.login_signup}/>
+        <MdOutlineAccountCircle onClick={navigate("/signup")} className={styles.login_signup}/>
       </div>
       }
 

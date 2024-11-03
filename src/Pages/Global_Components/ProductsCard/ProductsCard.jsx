@@ -24,6 +24,9 @@ export default function ProductsCard({card_data}) {
        </div>
        <div className={styles.card_bio}>
           <div className={styles.card_pricing_buying}>
+            <div className={styles.card_name}>
+              <p><b><i>--{card_data.name}</i></b></p>
+            </div>
             <div className={styles.card_pricing}>
                <div className={styles.love_status}> <p className={styles.love_icon}>< MdFavoriteBorder  /> </p>{love_react}</div>
                <div className={styles.pricing}>Price: <p className={styles.pricing_amount}> {card_data.price}৳</p></div>
