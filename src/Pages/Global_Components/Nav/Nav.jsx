@@ -20,6 +20,9 @@ export default function Nav() {
   const storehandle=()=>{
     navigate("/")
   }
+  const profileHandle=()=>{
+    navigate('/profile_artist')
+  }
  
   return (<div className={styles.nav}>
     <div className={styles.nav_desing}>
@@ -37,7 +40,7 @@ export default function Nav() {
      
       {
       login? 
-      <div className={styles.profile_icon}>
+      <div className={styles.profile_icon} onClick={profileHandle}>
        Account <ImProfile />
       </div>
       :

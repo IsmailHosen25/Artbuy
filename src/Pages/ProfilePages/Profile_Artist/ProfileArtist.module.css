@@ -1,0 +1,16 @@
+.profile_artist{
+    padding-top: 5rem;
+    width: 100%;
+}
+.profile_info{
+  padding-left: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: start;
+  gap: 5rem;
+}
+.profile_img{
+    width: 380px;
+    border-radius: 20px;
+}

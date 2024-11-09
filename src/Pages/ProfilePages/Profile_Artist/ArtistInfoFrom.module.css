@@ -1,0 +1,76 @@
+.form_div{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+}
+.input_name{
+   font-size: 5rem;
+   padding: 0rem 0.5rem;
+}
+.name{
+    color: #DCB855;
+    font-size: 5rem;
+    padding: 0rem 0.5rem;
+    border: 2px solid transparent;
+}
+.username_email{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0rem 0.5rem;
+    border: 2px solid transparent;
+}
+.input_div{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0rem 0.5rem;
+    border: 2px solid transparent;
+}
+.input{
+    font-size: 1.5rem;
+}
+.info{
+    color: #7E60BF;
+}
+.bio_input{
+   scrollbar-width: none;
+   padding: 0rem 0.5rem;
+}
+.bio_title{
+    font-size: 1.5rem;
+    padding: 0rem 0.5rem;
+    color: #7E60BF;
+    border: 2px solid transparent;
+}
+.bio{
+    width: 480px;
+    font-size: 1.3rem;
+    padding: 0rem 0.5rem;
+}
+.btn{
+    font-size:1.7rem ;
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+.edit_btn{
+    margin-top: 0.5rem;
+    padding: 0.1rem 0.5rem;
+    font-size:1.7rem ;
+    border: 1px solid #4F4F4F;
+    width: 65px;
+    background-color: #EFEFEF;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.edit_btn:hover{
+    background-color: #E5E5E5;
+}
