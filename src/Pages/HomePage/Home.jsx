@@ -5,6 +5,7 @@ import img from "../../assets/art_img.jpg"
 
 import { IoSearchSharp } from "react-icons/io5";
 import Nav from "../Global_Components/Nav/Nav";
+import Footer from "../Global_Components/Footer/Footer";
 
 const card_datas=[{
   "img":img,
@@ -42,6 +43,34 @@ const card_datas=[{
   "price":3680,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
+},{
+  "img":img,
+  "name":"hello Name4",
+  "like":1000,
+  "price":2500,
+  "available":"Available",
+  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
+},
+{ "img":img,
+  "name":"hello Name5",
+  "like":2000000,
+  "price":3680,
+  "available":"Available",
+  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
+},{
+  "img":img,
+  "name":"hello Name4",
+  "like":1000,
+  "price":2500,
+  "available":"Available",
+  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
+},
+{ "img":img,
+  "name":"hello Name5",
+  "like":2000000,
+  "price":3680,
+  "available":"Available",
+  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 }]
 export default function Home() {
   const [query ,setquery]=useState("")
@@ -61,6 +90,7 @@ export default function Home() {
           search(card_datas).map((item,i)=><ProductsCard key={i} card_data={item}/>)
         }
       </div>
+      <Footer/>
     </div>
     </>
   )
