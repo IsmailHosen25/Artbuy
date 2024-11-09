@@ -2,7 +2,8 @@
     display:flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* padding: 5rem; */
+    height: 100vh; 
     background: linear-gradient( -45deg, #DCB855 ,#f5d020);
 }
 .continer{
@@ -12,6 +13,7 @@
     overflow: hidden; 
     border-radius: 10px;
     box-shadow: -16px 0px 44px 13px rgb(0,0,0,0.1);
+    background: linear-gradient( -45deg, #DCB855 ,#f5d020);
 }
 .login{
   position: relative;
@@ -22,7 +24,7 @@
 .login p{
     width: 82.5%;
     text-align: end;
-    color: #fff;
+    color: red;
 }
 .label{
     color:#fff;

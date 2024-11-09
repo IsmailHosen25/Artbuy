@@ -8,21 +8,31 @@ export default function Singup() {
   const formik =useFormik({
     initialValues:{
       username:"",
-      number_email:"",
+      email:"",
       password:"",
-      cpassword:""
+      confirm_password:"",
+      userType:""
     },
     validationSchema:yup.object({
       username:yup.string()
               .required("username is required"),
       email:yup.string()
             .required("email or Number is required"),
-      password:yup.string()
+      password:yup.string().min(6)
                .required("password is required"),
-      cpassword:yup.string()
-              .required("confirm password is required")
+      confirm_password:yup.string()
+              .required("Confirm Password is required")
+              .oneOf([yup.ref("password"),null,'']),
+      userType:yup.string()
+      .required("Select as required")
     }),onSubmit:async (values)=>{
-          navigate("/")
+          const confirmsignup=confirm(`are you sure ${values.username}?`)
+          if(confirmsignup){
+            window.localStorage.setItem("login",true)
+            navigate("/")
+          }else{
+            console.log(values)
+          }
     }
     
     
@@ -34,16 +44,23 @@ export default function Singup() {
                  <form onSubmit={formik.handleSubmit}>
                      <label className={styles.label}>Sign Up</label>
                       <input  className={styles.input} type="text" name='username' placeholder="User Name" value={formik.values.username} onChange={formik.handleChange}/>
-                      <p>{formik.errors.username}</p>
+                      <p>{formik.touched.username ? formik.errors.username:""}</p>
                       <input  className={styles.input} type="email" name='email' placeholder="User Email" value={formik.values.email} onChange={formik.handleChange}/>
-                      <p>{formik.errors.email}</p>
+                      <p>{formik.touched.email? formik.errors.email:""}</p>
                       <input  className={styles.input} type="password" name='password' placeholder="Password" value={formik.values.password} onChange={formik.handleChange}/>
-                      <p>{formik.errors.password}</p>
-                      <input  className={styles.input} type="password" name='cpassword' placeholder="Confirm Password" value={formik.values.cpassword} onChange={formik.handleChange}/>
-                      <p>{formik.errors.cpassword}</p>
+                      <p>{formik.touched.password?formik.errors.password:""}</p>
+                      <input  className={styles.input} type="password" name='confirm_password' placeholder="Confirm Password" value={formik.values.cpassword} onChange={formik.handleChange}/>
+                      <p>{formik.touched.confirm_password?formik.errors.confirm_password:""}</p>
+                      <div className={styles.radio_btn}>
+                      <label className={styles.select_lable}>Select ... </label>
+                        <input type="radio" value="Artist" name="userType" onChange={formik.handleChange}/> Artist
+                        <input type="radio" value="Buyer" name="userType" onChange={formik.handleChange}/> Buyer
+                      </div>
+                      <p>{formik.touched.userType?formik.errors.userType:""}</p>
                       <button  className={styles.btn} type='submit'>Sign Up</button>
                  </form>
                  <p><i>Already member? <Link to={"/login"}>Login</Link> here.</i></p>
+                 <p><i>Back to <Link to="/">Home </Link>page</i></p>
                </div>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import ProductsCard from "../Global_Components/ProductsCard/ProductsCard"
 import styles from "./Home.module.css"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import img from "../../assets/art_img.jpg"
 
 import { IoSearchSharp } from "react-icons/io5";
+import Nav from "../Global_Components/Nav/Nav";
 
 const card_datas=[{
   "img":img,
@@ -48,6 +49,8 @@ export default function Home() {
     return data.filter(item=>item.name.toLowerCase().includes(query))
   }
   return (
+    <>
+    <Nav/>
     <div className={styles.hello}>
       <div className={styles.search_var}>
         <IoSearchSharp className={styles.search_icon}/>
@@ -55,9 +58,10 @@ export default function Home() {
       </div>
       <div className={styles.store}>
         {
-          search(card_datas).map((item,i)=><ProductsCard card_data={item}/>)
+          search(card_datas).map((item,i)=><ProductsCard key={i} card_data={item}/>)
         }
       </div>
     </div>
+    </>
   )
 }

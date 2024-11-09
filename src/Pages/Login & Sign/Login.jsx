@@ -17,6 +17,7 @@ export default function Login() {
       password:yup.string()
              .required("password is required")
     }),onSubmit:async(values)=>{
+        window.localStorage.setItem("login",true)
         navigate("/")
     }
 })
@@ -33,6 +34,7 @@ export default function Login() {
                       <button className={styles.btn} type='submit'>Login</button>
                  </form>
                  <p><i>New Member <Link to="/signup">Register</Link> here</i></p>
+                 <p><i>Back to <Link to="/">Home </Link>page</i></p>
                </div>
       </div>
     </div>

@@ -12,6 +12,7 @@
     overflow: hidden; 
     border-radius: 10px;
     box-shadow: -16px 0px 44px 13px rgb(0,0,0,0.1);
+    background: linear-gradient( -45deg, #DCB855 ,#f5d020);
 }
 .signup{
   position: relative;
@@ -21,7 +22,7 @@
 .signup p{
     width: 82.5%;
     text-align: end;
-    color: #fff;
+    color: red;
     font-size: 1.2rem;
 }
 .label{
@@ -29,18 +30,28 @@
     font-size: 2.3em;
     display: flex;
     justify-content: center;
-    margin:60px;
+    margin:30px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.5 ease-in-out;
 }
+.select_lable{
+    font-size: 1.5rem;
+    color:#fff;
+}
+.radio_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 .input{
-    width:65%;
+    width:70%;
     height:40px;
     background-color: #e0dede;
     display:flex;
     justify-content: center;
-    margin:20px auto;
+    margin:10px auto;
     padding:10px;
     border: none;
     outline: none;
