@@ -53,8 +53,8 @@ export default function Singup() {
                       <p>{formik.touched.confirm_password?formik.errors.confirm_password:""}</p>
                       <div className={styles.radio_btn}>
                       <label className={styles.select_lable}>Select ... </label>
-                        <input type="radio" value="Artist" name="userType" onChange={formik.handleChange}/> Artist
-                        <input type="radio" value="Buyer" name="userType" onChange={formik.handleChange}/> Buyer
+                        <input type="radio" value="Artist" name="userType" onChange={formik.handleChange} className={styles.radio}/> Artist
+                        <input type="radio" value="Buyer" name="userType" onChange={formik.handleChange} className={styles.radio}/> Buyer
                       </div>
                       <p>{formik.touched.userType?formik.errors.userType:""}</p>
                       <button  className={styles.btn} type='submit'>Sign Up</button>

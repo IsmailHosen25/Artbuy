@@ -48,7 +48,7 @@
     border: 2px solid transparent;
 }
 .bio{
-    width: 480px;
+    width: 50%;
     font-size: 1.3rem;
     padding: 0rem 0.5rem;
 }
@@ -74,3 +74,8 @@
 .edit_btn:hover{
     background-color: #E5E5E5;
 }
+@media screen and (max-width:1080px) {
+    .bio{
+        width: 95%;
+    }
+  }

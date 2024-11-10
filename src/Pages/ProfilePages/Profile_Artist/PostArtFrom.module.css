@@ -1,0 +1,70 @@
+.post_art_form{
+    padding-top: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input_img{
+    display: none;
+}
+.input_img_label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.input_img_icon{
+    width: 30px;
+}
+.form_div{
+    width: 80%;
+}
+.form_title{
+    font-size: 2.5rem;
+    background-color: #DCB855;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.form_main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.input_div{
+    font-size: 1.5rem;
+}
+.input_main{
+   padding-left:0.5rem;
+}
+.select_lable{
+    font-size: 1.5rem;
+    color:#000;
+}
+.radio_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.radio{
+    cursor: pointer;
+}
+.btn{
+    font-size:1.7rem ;
+    padding: 0.1rem 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+@media screen and (max-width:480px) {
+    .form_div{
+        width: 90%;
+    }
+}

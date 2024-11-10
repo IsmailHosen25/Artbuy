@@ -45,6 +45,9 @@
     align-items: center;
     gap: 1rem;
 }
+.radio{
+    cursor: pointer;
+}
 .input{
     width:70%;
     height:40px;

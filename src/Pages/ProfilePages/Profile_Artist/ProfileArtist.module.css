@@ -1,6 +1,19 @@
 .profile_artist{
     padding-top: 5rem;
     width: 100%;
+    height: auto;
+}
+.back_home{
+  width: 100%;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logout_link{
+  text-decoration: underline;
+  color: #551A8B;
+  cursor: pointer;
 }
 .profile_info{
   padding-left: 5rem;
@@ -9,8 +22,28 @@
   justify-content: left;
   align-items: start;
   gap: 5rem;
+  height: auto;
 }
 .profile_img{
     width: 380px;
     border-radius: 20px;
+}
+@media screen and (max-width:780px) {
+  .profile_info{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+}
+@media screen and (max-width:480px) {
+  .profile_info{
+    padding-left: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile_img{
+    width: 300px;
+}
+  
 }
