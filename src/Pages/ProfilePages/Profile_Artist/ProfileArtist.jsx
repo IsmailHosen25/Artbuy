@@ -1,6 +1,9 @@
 import styles from "./ProfileArtist.module.css"
 import profile_img from "../../../assets/Hasan.jpg"
-import img from "../../../assets/art_img.jpg"
+import art1 from "../../../assets/art1.jpg"
+import art2 from "../../../assets/art2.jpg"
+import art3 from "../../../assets/art3.jpg"
+import art4 from "../../../assets/art4.jpg"
 
 import ArtistInfoFrom from "./ArtistInfoFrom"
 import { Link, useNavigate } from "react-router-dom"
@@ -9,65 +12,68 @@ import ArtistTimeline from "./ArtistTimeline"
 import { FaClipboardList } from "react-icons/fa6";
 
 const card_datas=[{
-  "img":img,
-  "name":"hello Name1",
-  "like":2300,
+  "img":art1,
+  "quantity":1,
+  "name":"mona Lisa",
+  "like":230000,
   "price":790,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
   {
-  "img":img,
-  "name":"hello Name2",
+  "img":art2,
+  "quantity":1,
+  "name":"Starry Night",
   "like":999,
   "price":250,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":img,
-  "name":"hello Name3",
+  "img":art3,
+  "quantity":1,
+  "name":"beauty girl",
   "like":20000,
   "price":290,
   "available":"Not Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":img,
-  "name":"hello Name4",
+  "img":art4,
+  "name":"smoking man",
   "like":1000,
   "price":2500,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
-{ "img":img,
-  "name":"hello Name5",
+{ "img":art1,
+  "name":"mona Lisa",
   "like":2000000,
   "price":3680,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":img,
-  "name":"hello Name4",
+  "img":art2,
+  "name":"Starry Night",
   "like":1000,
   "price":2500,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
-{ "img":img,
-  "name":"hello Name5",
+{ "img":art3,
+  "name":"beauty girl",
   "like":2000000,
   "price":3680,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":img,
-  "name":"hello Name4",
+  "img":art4,
+  "name":"smoking man",
   "like":1000,
   "price":2500,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
-{ "img":img,
-  "name":"hello Name5",
+{ "img":art1,
+  "name":"mona Lisa",
   "like":2000000,
   "price":3680,
   "available":"Available",

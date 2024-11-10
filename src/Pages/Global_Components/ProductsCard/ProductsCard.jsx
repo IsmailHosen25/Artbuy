@@ -1,7 +1,10 @@
 import React from 'react'
 import styles from "./ProductsCard.module.css"
+import useCartContext from "../../../Hooks/useCartContext"
 import { MdFavoriteBorder } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 export default function ProductsCard({card_data}) {
+    const navigate =useNavigate()
      let love_react=0
      if(card_data.like<1000){
       love_react=card_data.like
@@ -11,11 +14,16 @@ export default function ProductsCard({card_data}) {
      else{
       love_react=card_data.like/1000000 +"M"
      }
+
+     const {cartitem,setcartitem}=useCartContext()
+
+
      const Buynow=()=>{
-       console.log(card_data)
+      setcartitem([...cartitem,{...card_data}])
+      navigate("/cart")
      }
      const AddToCart=()=>{
-      console.log(card_data)
+      setcartitem([...cartitem,{...card_data}])
      }
   return (
     <div className={styles.card}>

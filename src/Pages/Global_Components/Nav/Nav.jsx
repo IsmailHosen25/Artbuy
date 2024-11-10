@@ -1,12 +1,15 @@
 import styles from "./Nav.module.css"
 import React, { useEffect, useState } from 'react'
+import useCartContext from "../../../Hooks/useCartContext";
 import { useNavigate } from "react-router-dom";
 import { ImProfile } from "react-icons/im";
 import { FaStore } from "react-icons/fa";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { GiPencil } from "react-icons/gi";
 import { PiShoppingCartFill } from "react-icons/pi";
+
 export default function Nav() {
+  const {cartitem,setcartitem}=useCartContext()
   const navigate =useNavigate()
   const [login,setlogin]=useState(false)
   useEffect(()=>{setlogin(window.localStorage.getItem("login"))},[])
@@ -30,7 +33,7 @@ export default function Nav() {
         <h3 className={styles.nave_name_title}>Artbuy</h3>
         <p className={styles.nave_name_icon}><GiPencil/></p>
        </div>
-       <div className={styles.cart_icon}><PiShoppingCartFill/> {cartvalue}</div>
+       <div className={styles.cart_icon} onClick={()=>navigate("/cart")}><PiShoppingCartFill/> {cartitem.length}</div>
     </div>
     <div className={styles.nav_manu}>
       <div className={styles.store_icon} onClick={storehandle} >
