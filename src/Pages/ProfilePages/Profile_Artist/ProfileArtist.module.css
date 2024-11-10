@@ -2,6 +2,10 @@
     padding-top: 5rem;
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .back_home{
   width: 100%;
@@ -10,9 +14,15 @@
   justify-content: center;
   align-items: center;
 }
-.logout_link{
-  text-decoration: underline;
-  color: #551A8B;
+.artist_order{
+  color:#FF8205;
+  cursor: pointer;
+}
+.artist_order:hover{
+  color:#551A8B;
+  transition: 0.1s linear;
+}
+.logout_btn{
   cursor: pointer;
 }
 .profile_info{
@@ -27,6 +37,46 @@
 .profile_img{
     width: 380px;
     border-radius: 20px;
+}
+.logout_btn{
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timeline{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timeline_title{
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.timeline_title_p{
+  font-size: 3rem;
+  color: #7AB2D3;
+}
+.timeline_title_desgin{
+  width: 100%;
+  background-color: #7AB2D3;
+  border: 2px solid #7AB2D3;
+  color: #7AB2D3;
+}
+.timeline_card{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-bottom: 5rem;
 }
 @media screen and (max-width:780px) {
   .profile_info{
