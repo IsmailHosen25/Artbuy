@@ -36,6 +36,19 @@
     cursor: pointer;
     transition: 0.5 ease-in-out;
 }
+.select_lable{
+    font-size: 1.5rem;
+    color:#fff;
+}
+.radio_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.radio{
+    cursor: pointer;
+}
 .input{
     width:65%;
     height:4rem;

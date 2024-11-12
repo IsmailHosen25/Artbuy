@@ -29,6 +29,7 @@ export default function Singup() {
           const confirmsignup=confirm(`are you sure ${values.username}?`)
           if(confirmsignup){
             window.localStorage.setItem("login",true)
+            window.localStorage.setItem("userType",values.userType)
             navigate("/")
           }else{
             console.log(values)

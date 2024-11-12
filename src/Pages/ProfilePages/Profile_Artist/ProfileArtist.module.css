@@ -23,7 +23,16 @@
   transition: 0.1s linear;
 }
 .logout_btn{
+  background-color: #DCB855;
+  color: #fff;
+  border:2px solid #DCB855;
   cursor: pointer;
+  transition: 0.1s linear;
+}
+.logout_btn:hover{
+  background-color: #fff;
+  color: #DCB855;
+  transition: 0.1s linear;
 }
 .profile_info{
   padding-left: 5rem;
