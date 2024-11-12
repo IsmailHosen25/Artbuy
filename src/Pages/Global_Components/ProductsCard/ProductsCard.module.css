@@ -99,6 +99,12 @@
    padding: 0.3rem 0rem;
    cursor: pointer;
 }
+.buy_btn:hover{
+    background-color: #fff;
+    color: #2ABBE8;
+    outline: 2px solid #2ABBE8;
+    transition: 0.1s linear all;
+}
 .cart_btn{
     width: 50%;
     background-color: #F57224;
@@ -107,6 +113,13 @@
     font-size: 2rem;
     padding: 0.3rem 0rem;
     cursor: pointer;
+    transition: 0.1s linear;
+}
+.cart_btn:hover{
+    background-color: #fff;
+    color: #F57224;
+    outline: 2px solid #F57224;
+    transition: 0.1s linear all;
 }
 .cart_detiels{
     font-size: 1.5rem;

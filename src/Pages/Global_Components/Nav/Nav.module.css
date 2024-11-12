@@ -33,6 +33,13 @@
     background-color: #FF8205;
     border-radius: 6px;
     cursor: pointer;
+    transition: 0.1s linear all;
+}
+.cart_icon:hover{
+    background-color: #fff;
+    outline: 2px solid #FF8205;
+    color: #FF8205;
+    transition: 0.1s linear all;
 }
 .nav_manu{
     width: 100%;
@@ -52,6 +59,10 @@
     gap: 1rem;
     cursor: pointer;
 }
+.store_icon:hover{
+    color: #3995DB;
+    transition:0.1s linear all;
+}
 .profile_icon{
     font-size: 2.5rem;
     color: #36BDD7;
@@ -62,6 +73,9 @@
     gap: 1rem;
     cursor: pointer;
 }
+.profile_icon:hover{
+    color: #3995DB;
+}
 .account{
     font-size: 2rem;
     color: #36BDD7;
@@ -71,8 +85,17 @@
     align-items: center;
     gap: 0.5rem;
 }
-.login_signup{
+.login{
     cursor: pointer;
+}
+.login:hover{
+    color: #3995DB;
+}
+.signup{
+    cursor: pointer;
+}
+.signup:hover{
+    color: #3995DB;
 }
 @media screen and (max-width: 480px){
     .nave_name_desing{

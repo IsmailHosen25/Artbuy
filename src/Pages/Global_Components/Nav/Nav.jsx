@@ -53,10 +53,11 @@ export default function Nav() {
       </div>
       :
       <div className={styles.account}>
-        <div onClick={LoginHandle} className={styles.login_signup} >Login</div>
+        <div onClick={LoginHandle} className={styles.login} >Login</div>
         <div>/</div>
-        <div onClick={SignupHandle} className={styles.login_signup}>Sign Up</div>
-        <MdOutlineAccountCircle onClick={SignupHandle} className={styles.login_signup}/>
+        <div onClick={SignupHandle} className={styles.signup}>Sign Up
+        <MdOutlineAccountCircle onClick={SignupHandle}/>
+        </div>
       </div>
       }
 

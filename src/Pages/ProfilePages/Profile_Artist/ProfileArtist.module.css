@@ -13,6 +13,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1rem;
+}
+.back_to_account{
+  text-decoration: underline;
+  color: #551A8B;
+  cursor: pointer;
 }
 .artist_order{
   color:#FF8205;
@@ -86,6 +92,15 @@
   gap: 3rem;
   flex-wrap: wrap;
   padding-bottom: 5rem;
+}
+.profile_A_order{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-bottom: 3rem;
 }
 @media screen and (max-width:780px) {
   .profile_info{

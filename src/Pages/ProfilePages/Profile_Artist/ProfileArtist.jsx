@@ -10,6 +10,8 @@ import { Link, useNavigate } from "react-router-dom"
 import PostArtFrom from "./PostArtFrom"
 import ArtistTimeline from "./ArtistTimeline"
 import { FaClipboardList } from "react-icons/fa6";
+import { useState } from "react"
+import ArtistOrder from "./ArtistOrder"
 
 const card_datas=[{
   "img":art1,
@@ -80,35 +82,140 @@ const card_datas=[{
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 }]
 
-
+const orderData=[{
+  "orderId":"106033B897E",
+  "img":art1,
+  "quantity":1,
+  "name":"mona Lisa",
+  "price":790,
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"waiting for Confirmation"
+  
+  
+},
+  {
+  "orderId":"106033B897E",
+  "img":art2,
+  "quantity":1,
+  "name":"Starry Night",
+  "like":999,
+  "price":250,
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"Confirmed"
+  
+},{
+  "orderId":"106033B897E",
+  "img":art3,
+  "quantity":1,
+  "name":"beauty girl",
+  "like":20000,
+  "price":290,
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"waiting for Confirmation"
+  
+},{
+  "orderId":"106033B897E",
+  "img":art4,
+  "name":"smoking man",
+  "like":1000,
+  "price":2500,
+  "mobile":"0178*****48",
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"Confirmed"
+  
+},
+{ 
+  "orderId":"106033B897E",
+  "img":art1,
+  "name":"mona Lisa",
+  "like":2000000,
+  "price":3680,
+  "mobile":"0178*****48",
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"Assigned to rider"
+  
+},{
+  "orderId":"106033B897E",
+  "img":art2,
+  "name":"Starry Night",
+  "like":1000,
+  "price":2500,
+  "mobile":"0178*****48",
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"canceled"
+  
+},
+{ 
+  "orderId":"106033B897E",
+  "img":art3,
+  "name":"beauty girl",
+  "like":2000000,
+  "price":3680,
+  "mobile":"0178*****48",
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"Confirmed"
+  
+},{
+  "orderId":"106033B897E",
+  "img":art4,
+  "name":"smoking man",
+  "like":1000,
+  "price":2500,
+  "mobile":"0178*****48",
+  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
+  "status":"delivered"
+  
+}]
 
 export default function ProfileArtist() {
   const navigate =useNavigate()
+  const [order,setorder]=useState(false)
   return (
     <div className={styles.profile_artist}>
       <div className={styles.back_home}>
+        {order? <>
+          <p>Back to&ensp;</p>
+          <p className={styles.back_to_account} onClick={()=>setorder(false)}>Account</p>
+        </>
+        :
+        <>
         <p>Back to&ensp;</p>
         <Link to="/"> Home</Link>
         <p>&ensp;/&ensp;</p>
-        <p className={styles.artist_order}> <FaClipboardList/> Order</p>
+        <p className={styles.artist_order} onClick={()=>setorder(true)}> <FaClipboardList/> Order</p>
+        </>
+        
+        }
+        
       </div>
-      <div className={styles.profile_info}>
-        <div>
-          <img src={profile_img} className={styles.profile_img}/>
-          <button className={styles.logout_btn} onClick={() => {window.localStorage.removeItem("login"); navigate("/");}}>Logout</button>
-        </div>
-          <ArtistInfoFrom name={"Hasan"} username={"hasan"} email={"ismailhosen1006@gmail.com"} mobile={"01789828149"} bio={"An artist is a person engaged in an activity related to creating art, practicing the arts, or demonstrating an art. The most common usage (in both everyday speech and academic discourse) refers to a practitioner in the visual arts only."} address={"Dhaka,Bangladesh"}/>
+      {order?
+      <div className={styles.profile_A_order}>
+          {orderData.map((item,i)=><ArtistOrder key={i} orderData={item}/>)}
       </div>
-      <PostArtFrom/>
-      <div className={styles.timeline}>
-      <div className={styles.timeline_title}>
-             <p className={styles.timeline_title_p}>TimeLine </p>
-             <div className={styles.timeline_title_desgin}></div>
-      </div>
-      <div className={styles.timeline_card}>
-           {card_datas.map((item,i)=> <ArtistTimeline card_data={item} key={i}/>)}
-      </div>
-      </div>
+
+      
+      :
+        <>
+            <div className={styles.profile_info}>
+              <div>
+                <img src={profile_img} className={styles.profile_img}/>
+                <button className={styles.logout_btn} onClick={() => {window.localStorage.removeItem("login"); navigate("/");}}>Logout</button>
+              </div>
+                <ArtistInfoFrom name={"Hasan"} username={"hasan"} email={"ismailhosen1006@gmail.com"} mobile={"01789828149"} bio={"An artist is a person engaged in an activity related to creating art, practicing the arts, or demonstrating an art. The most common usage (in both everyday speech and academic discourse) refers to a practitioner in the visual arts only."} address={"Dhaka,Bangladesh"}/>
+            </div>
+            <PostArtFrom/>
+            <div className={styles.timeline}>
+            <div className={styles.timeline_title}>
+                   <p className={styles.timeline_title_p}>TimeLine </p>
+                   <div className={styles.timeline_title_desgin}></div>
+            </div>
+            <div className={styles.timeline_card}>
+                 {card_datas.map((item,i)=> <ArtistTimeline card_data={item} key={i}/>)}
+            </div>
+            </div>
+        </>
+      
+      }
       </div>
   )
 }
