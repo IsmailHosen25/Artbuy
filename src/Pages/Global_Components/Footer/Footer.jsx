@@ -8,12 +8,12 @@ export default function Footer() {
         h:"Useful Linkes",
         p1:"Home Page",
         p1link:"/",
-        p2:"About Us",
+        p2:"Account",
         p2link:"/",
-        p3:"Help",
+        p3:"Store",
         p3link:"/",
-        p4:"Contect Us",
-        p4link:"/"
+        p4:"Cart",
+        p4link:"/cart"
     },{
     
         h:"Help & Information",

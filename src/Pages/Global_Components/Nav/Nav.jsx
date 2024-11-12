@@ -2,7 +2,7 @@ import styles from "./Nav.module.css"
 import React, { useEffect, useState } from 'react'
 import useCartContext from "../../../Hooks/useCartContext";
 import { useNavigate } from "react-router-dom";
-import { ImProfile } from "react-icons/im";
+import { RiAccountPinCircleLine } from "react-icons/ri";
 import { FaStore } from "react-icons/fa";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { GiPencil } from "react-icons/gi";
@@ -49,7 +49,7 @@ export default function Nav() {
       {
       login? 
       <div className={styles.profile_icon} onClick={profileHandle}>
-       Account <ImProfile />
+       Account <RiAccountPinCircleLine />
       </div>
       :
       <div className={styles.account}>

@@ -15,18 +15,27 @@
   align-items: center;
   padding-bottom: 1rem;
 }
+.bth_link:hover{
+  color:#58BAD7
+}
 .back_to_account{
   text-decoration: underline;
   color: #551A8B;
   cursor: pointer;
+}
+.back_to_account:hover{
+  color: #58BAD7;
 }
 .artist_order{
   color:#FF8205;
   cursor: pointer;
 }
 .artist_order:hover{
-  color:#551A8B;
+  color:#58BAD7;
   transition: 0.1s linear;
+}
+.input_for_img{
+  display: none;
 }
 .logout_btn{
   background-color: #DCB855;

@@ -116,6 +116,13 @@
    justify-content: center;
    align-items: center;
    gap: 0.5rem;
+   transition: 0.1s linear all;
+}
+.delete_btn:hover{
+    background-color: #fff;
+    color:#FA3636 ;
+    outline: 2px solid #FA3636;
+    transition: 0.1s linear all;
 }
 .edit_btn{
     width: 50%;
@@ -129,6 +136,13 @@
    justify-content: center;
    align-items:start;
    gap: 0.5rem;
+   transition: 0.1s linear all;
+}
+.edit_btn:hover{
+    background-color: #fff;
+    color:#FBBE0C ;
+    outline: 2px solid #FBBE0C;
+    transition: 0.1s linear all;
 }
 .save_btn{
     width: 50%;
@@ -138,6 +152,13 @@
     font-size: 2rem;
     padding: 0.3rem 0rem;
     cursor: pointer;
+    transition: 0.1s linear all;
+}
+.save_btn:hover{
+    background-color: #fff;
+    color:#0D92F4 ;
+    outline: 2px solid #0D92F4;
+    transition: 0.1s linear all;
 }
 .cart_detiels{
     font-size: 1.5rem;

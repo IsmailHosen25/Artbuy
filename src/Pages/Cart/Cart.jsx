@@ -1,6 +1,6 @@
 import styles from './Cart.module.css'
 import useCartContext from "../../Hooks/useCartContext"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
 import { useFormik } from "formik"
 import * as yup from "yup"
 import { useState } from 'react'
@@ -41,6 +41,10 @@ export default function Cart() {
       <div className={styles.cartin}>
 
       <div className={styles.products}>
+      <div className={styles.back_to_home}>
+        <p>Back to&ensp;</p>
+        <Link to="/" className={styles.bth_link}> Home</Link>
+      </div>
         <div>
           <h1 className={styles.title}>Your Products:</h1>
           <p className={styles.headingp}>You have {cartitem.length} Products</p>

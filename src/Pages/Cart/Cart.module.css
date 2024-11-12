@@ -13,6 +13,14 @@
  padding: 2rem;
  gap: 4rem;
 }
+.back_to_home{
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+}
+.bth_link:hover{
+    color:#58BAD7
+}
 .products{
     width: 58%;
     display: flex;

@@ -170,6 +170,10 @@ const orderData=[{
 export default function ProfileArtist() {
   const navigate =useNavigate()
   const [order,setorder]=useState(false)
+  const [getProfileImage,setgetProfileImage]=useState("")
+  const handleProfileImage=(path)=>{
+    setgetProfileImage(path)
+  }
   return (
     <div className={styles.profile_artist}>
       <div className={styles.back_home}>
@@ -180,7 +184,7 @@ export default function ProfileArtist() {
         :
         <>
         <p>Back to&ensp;</p>
-        <Link to="/"> Home</Link>
+        <Link to="/" className={styles.bth_link}> Home</Link>
         <p>&ensp;/&ensp;</p>
         <p className={styles.artist_order} onClick={()=>setorder(true)}> <FaClipboardList/> Order</p>
         </>
@@ -198,7 +202,10 @@ export default function ProfileArtist() {
         <>
             <div className={styles.profile_info}>
               <div>
+                <label htmlFor="img_input">
                 <img src={profile_img} className={styles.profile_img}/>
+                </label>
+                <input type="file" accept="image/jpeg, image/png, image/jpg" id="img_input" className={styles.input_for_img} onChange={(e)=>handleProfileImage(e.target.files[0])}/>
                 <button className={styles.logout_btn} onClick={() => {window.localStorage.removeItem("login"); navigate("/");}}>Logout</button>
               </div>
                 <ArtistInfoFrom name={"Hasan"} username={"hasan"} email={"ismailhosen1006@gmail.com"} mobile={"01789828149"} bio={"An artist is a person engaged in an activity related to creating art, practicing the arts, or demonstrating an art. The most common usage (in both everyday speech and academic discourse) refers to a practitioner in the visual arts only."} address={"Dhaka,Bangladesh"}/>
