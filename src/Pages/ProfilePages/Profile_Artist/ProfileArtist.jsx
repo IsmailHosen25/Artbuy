@@ -167,6 +167,17 @@ const orderData=[{
   
 }]
 
+const name="Hasan"
+const username="hasan" 
+const email="ismailhosen1006@gmail.com"
+const mobile="01789828149"
+const bio="An artist is a person engaged in an activity related to creating art, practicing the arts, or demonstrating an art. The most common usage (in both everyday speech and academic discourse) refers to a practitioner in the visual arts only."
+const address="Dhaka,Bangladesh"
+const facebook="https://www.facebook.com/profile.php?id=100075446262873"
+const instagram="https://www.instagram.com/hasan._al_banna/"
+const linkedin="https://www.linkedin.com/in/md-ismail-hosen-81b176276/"
+const twitter=""
+
 export default function ProfileArtist() {
   const navigate =useNavigate()
   const [order,setorder]=useState(false)
@@ -208,7 +219,7 @@ export default function ProfileArtist() {
                 <input type="file" accept="image/jpeg, image/png, image/jpg" id="img_input" className={styles.input_for_img} onChange={(e)=>handleProfileImage(e.target.files[0])}/>
                 <button className={styles.logout_btn} onClick={() => {window.localStorage.removeItem("login"); navigate("/");}}>Logout</button>
               </div>
-                <ArtistInfoFrom name={"Hasan"} username={"hasan"} email={"ismailhosen1006@gmail.com"} mobile={"01789828149"} bio={"An artist is a person engaged in an activity related to creating art, practicing the arts, or demonstrating an art. The most common usage (in both everyday speech and academic discourse) refers to a practitioner in the visual arts only."} address={"Dhaka,Bangladesh"}/>
+                <ArtistInfoFrom name={name} username={username} email={email} mobile={mobile} bio={bio} address={address} facebook={facebook} instagram={instagram} linkedin={linkedin} twitter={twitter}/>
             </div>
             <PostArtFrom/>
             <div className={styles.timeline}>

@@ -1,7 +1,33 @@
 .form_div{
     display: flex;
+    flex-direction: column;
     justify-content: start;
     align-items: start;
+}
+
+.sm_link{
+    padding-top: 2rem;
+    font-size: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
+}
+.facebook{
+    color: #0866FF;
+}
+.instagram{
+    color:#F54808;
+}
+.linkedin{
+    color: #0C61BF;
+}
+.twitter{
+    color: #1C9CEA;
+}
+.link:hover{
+    color:#DCB855;
 }
 .input_name{
    font-size: 5rem;
@@ -12,6 +38,7 @@
     font-size: 5rem;
     padding: 0rem 0.5rem;
     border: 2px solid transparent;
+    display: inline;
 }
 .username_email{
     font-size: 1.5rem;
@@ -21,6 +48,7 @@
     gap: 0.5rem;
     padding: 0rem 0.5rem;
     border: 2px solid transparent;
+    width: fit-content;
 }
 .input_div{
     font-size: 1.5rem;
@@ -30,6 +58,7 @@
     gap: 0.5rem;
     padding: 0rem 0.5rem;
     border: 2px solid transparent;
+    width:fit-content;
 }
 .input{
     font-size: 1.5rem;

@@ -1,8 +1,13 @@
 import styles from "./ArtistInfoFrom.module.css";
 import { useFormik } from "formik";
-import * as yup from "yup";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { IoLogoFacebook } from "react-icons/io5";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+
 export default function ArtistInfoFrom({
   name,
   username,
@@ -10,6 +15,10 @@ export default function ArtistInfoFrom({
   mobile,
   bio,
   address,
+  facebook,
+  instagram,
+  linkedin,
+  twitter
 }) {
   const [edit, setedit] = useState(false);
   const formik = useFormik({
@@ -18,6 +27,10 @@ export default function ArtistInfoFrom({
       mobile: mobile,
       bio: bio,
       address: address,
+      facebook:facebook,
+      instagram:instagram,
+      linkedin:linkedin,
+      twitter:twitter
     },
     onSubmit: async (values) => {
       console.log(values);
@@ -128,6 +141,17 @@ export default function ArtistInfoFrom({
             </div>
           )}
         </div>
+        <div className={styles.sm_link}>
+        <Link className={`${styles.link} ${styles.facebook}`} to={facebook} target="_black"><IoLogoFacebook/></Link>
+        {edit?<input type="text" name="facebook" placeholder="Add facbook link" value={formik.values.facebook} onChange={formik.handleChange}/>:""}
+        
+        <Link className={`${styles.link} ${styles.instagram}`} to={instagram} target="_black"><FaInstagram /></Link>
+        {edit?<input type="text" name="instagram" placeholder="Add instagram link" value={formik.values.instagram} onChange={formik.handleChange}/>:""}
+        <Link className={`${styles.link} ${styles.linkedin}`} to={linkedin} target="_black"><FaLinkedin/></Link>
+        {edit?<input type="text" name="linkedin" placeholder="Add linkedin link" value={formik.values.linkedin} onChange={formik.handleChange}/>:""}
+        <Link className={`${styles.link} ${styles.twitter}`} to={twitter} target="_black"><FaTwitter/></Link>
+        {edit?<input type="text" name="twitter" placeholder="Add twitter link" value={formik.values.twitter} onChange={formik.handleChange}/>:""}
+      </div>
         {edit ? (
           <button
             className={styles.btn}
@@ -141,7 +165,9 @@ export default function ArtistInfoFrom({
             Edit <MdOutlineModeEditOutline />
           </div>
         )}
-      </form>
+ 
+     
+    </form>
     </div>
   );
 }
