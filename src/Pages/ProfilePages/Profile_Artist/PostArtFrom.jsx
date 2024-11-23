@@ -11,6 +11,7 @@ export default function PostArtFrom() {
         initialValues:{
           artimg:"",
           name:"",
+          category:"",
           price:"",
           available:"",
           about:""
@@ -20,6 +21,8 @@ export default function PostArtFrom() {
           .required("Photo is required"),
           name:yup.string()
                   .required("name is required"),
+           category:yup.string()
+                  .required("Category is required"),
           price:yup.number()
                 .required("Price is required"),
           available:yup.string()
@@ -55,6 +58,20 @@ export default function PostArtFrom() {
                 <div className={styles.input_div}>
                     <label htmlFor='name'>Name: </label>
                     <input type='text' id='name' placeholder='Name of the Art'  className={styles.input_main} name='name' value={formik.values.name} onChange={formik.handleChange}/>
+                </div>
+                <div className={styles.input_div}>
+                    <label htmlFor='category'>Category: </label>
+                    <select name="category" id='category' onChange={formik.handleChange} className={styles.select}>
+                        <option defaultChecked >Choose ...</option>
+                        <option>Landscape</option>
+                        <option>Animals</option>
+                        <option>Fashion</option>
+                        <option>Nature</option>
+                        <option>Urban</option>
+                        <option>Historical</option>
+                        <option>Religion</option>
+                        <option>Self Portrait</option>
+                    </select>
                 </div>
                 <div className={styles.input_div}>
                     <label htmlFor='price'>Price: </label>

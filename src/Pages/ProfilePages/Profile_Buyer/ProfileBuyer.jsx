@@ -1,10 +1,11 @@
 import styles from "../Profile_Artist/ProfileArtist.module.css"
 import thisStyles from "./ProfileBuyer.module.css"
 import profile_img from "../../../assets/Hasan.jpg"
-import art1 from "../../../assets/art1.jpg"
-import art2 from "../../../assets/art2.jpg"
-import art3 from "../../../assets/art3.jpg"
-import art4 from "../../../assets/art4.jpg"
+import a41 from "../../../assets/a41.jpg"
+import a42 from "../../../assets/a42.jpeg"
+import a43 from "../../../assets/a43.jpeg"
+import a44 from "../../../assets/a44.jpg"
+import a45 from "../../../assets/a45.jpg"
 
 import ArtistInfoFrom from "../Profile_Artist/ArtistInfoFrom"
 import { Link, useNavigate } from "react-router-dom"
@@ -13,7 +14,7 @@ import ProfileOrder from "../../Global_Components/OrderForProfile/ProfileOrder";
 
 const orderData=[{
   "orderId":"106033B897E",
-  "img":art1,
+  "img":a41,
   "quantity":1,
   "name":"mona Lisa",
   "price":790,
@@ -24,7 +25,7 @@ const orderData=[{
 },
   {
   "orderId":"106033B897E",
-  "img":art2,
+  "img":a42,
   "quantity":1,
   "name":"Starry Night",
   "like":999,
@@ -34,7 +35,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art3,
+  "img":a43,
   "quantity":1,
   "name":"beauty girl",
   "like":20000,
@@ -44,7 +45,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art4,
+  "img":a44,
   "name":"smoking man",
   "like":1000,
   "price":2500,
@@ -55,7 +56,7 @@ const orderData=[{
 },
 { 
   "orderId":"106033B897E",
-  "img":art1,
+  "img":a45,
   "name":"mona Lisa",
   "like":2000000,
   "price":3680,
@@ -65,7 +66,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art2,
+  "img":a42,
   "name":"Starry Night",
   "like":1000,
   "price":2500,
@@ -76,7 +77,7 @@ const orderData=[{
 },
 { 
   "orderId":"106033B897E",
-  "img":art3,
+  "img":a43,
   "name":"beauty girl",
   "like":2000000,
   "price":3680,
@@ -86,7 +87,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art4,
+  "img":a44,
   "name":"smoking man",
   "like":1000,
   "price":2500,

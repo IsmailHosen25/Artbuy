@@ -1,9 +1,10 @@
 import styles from "./ProfileArtist.module.css"
 import profile_img from "../../../assets/Hasan.jpg"
-import art1 from "../../../assets/art1.jpg"
-import art2 from "../../../assets/art2.jpg"
-import art3 from "../../../assets/art3.jpg"
-import art4 from "../../../assets/art4.jpg"
+import a41 from "../../../assets/a41.jpg"
+import a42 from "../../../assets/a42.jpeg"
+import a43 from "../../../assets/a43.jpeg"
+import a44 from "../../../assets/a44.jpg"
+import a45 from "../../../assets/a45.jpg"
 
 import ArtistInfoFrom from "./ArtistInfoFrom"
 import { Link, useNavigate } from "react-router-dom"
@@ -14,7 +15,7 @@ import { useState } from "react"
 import ArtistOrder from "./ArtistOrder"
 
 const card_datas=[{
-  "img":art1,
+  "img":a41,
   "quantity":1,
   "name":"mona Lisa",
   "like":230000,
@@ -23,7 +24,7 @@ const card_datas=[{
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
   {
-  "img":art2,
+  "img":a42,
   "quantity":1,
   "name":"Starry Night",
   "like":999,
@@ -31,7 +32,7 @@ const card_datas=[{
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":art3,
+  "img":a43,
   "quantity":1,
   "name":"beauty girl",
   "like":20000,
@@ -39,42 +40,42 @@ const card_datas=[{
   "available":"Not Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":art4,
+  "img":a44,
   "name":"smoking man",
   "like":1000,
   "price":2500,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
-{ "img":art1,
+{ "img":a45,
   "name":"mona Lisa",
   "like":2000000,
   "price":3680,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":art2,
+  "img":a42,
   "name":"Starry Night",
   "like":1000,
   "price":2500,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
-{ "img":art3,
+{ "img":a43,
   "name":"beauty girl",
   "like":2000000,
   "price":3680,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },{
-  "img":art4,
+  "img":a44,
   "name":"smoking man",
   "like":1000,
   "price":2500,
   "available":"Available",
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 },
-{ "img":art1,
+{ "img":a41,
   "name":"mona Lisa",
   "like":2000000,
   "price":3680,
@@ -84,7 +85,7 @@ const card_datas=[{
 
 const orderData=[{
   "orderId":"106033B897E",
-  "img":art1,
+  "img":a41,
   "quantity":1,
   "name":"mona Lisa",
   "price":790,
@@ -95,7 +96,7 @@ const orderData=[{
 },
   {
   "orderId":"106033B897E",
-  "img":art2,
+  "img":a42,
   "quantity":1,
   "name":"Starry Night",
   "like":999,
@@ -105,7 +106,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art3,
+  "img":a43,
   "quantity":1,
   "name":"beauty girl",
   "like":20000,
@@ -115,7 +116,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art4,
+  "img":a44,
   "name":"smoking man",
   "like":1000,
   "price":2500,
@@ -126,7 +127,7 @@ const orderData=[{
 },
 { 
   "orderId":"106033B897E",
-  "img":art1,
+  "img":a41,
   "name":"mona Lisa",
   "like":2000000,
   "price":3680,
@@ -136,7 +137,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art2,
+  "img":a42,
   "name":"Starry Night",
   "like":1000,
   "price":2500,
@@ -147,7 +148,7 @@ const orderData=[{
 },
 { 
   "orderId":"106033B897E",
-  "img":art3,
+  "img":a43,
   "name":"beauty girl",
   "like":2000000,
   "price":3680,
@@ -157,7 +158,7 @@ const orderData=[{
   
 },{
   "orderId":"106033B897E",
-  "img":art4,
+  "img":a44,
   "name":"smoking man",
   "like":1000,
   "price":2500,

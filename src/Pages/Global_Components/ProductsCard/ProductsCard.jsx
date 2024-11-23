@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "./ProductsCard.module.css"
 import useCartContext from "../../../Hooks/useCartContext"
-import { MdFavoriteBorder } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { FaHeart } from "react-icons/fa";
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 export default function ProductsCard({card_data}) {
     const navigate =useNavigate()
      let love_react=0
@@ -25,6 +25,7 @@ export default function ProductsCard({card_data}) {
      const AddToCart=()=>{
       setcartitem([...cartitem,{...card_data}])
      }
+     const [love,setlove]=useState(false)
   return (
     <div className={styles.card}>
        <div className={styles.img_div}>
@@ -33,10 +34,11 @@ export default function ProductsCard({card_data}) {
        <div className={styles.card_bio}>
           <div className={styles.card_pricing_buying}>
             <div className={styles.card_name}>
-              <p><b><i>--{card_data.name}</i></b></p>
+              <p><b><i>{card_data.name}</i></b> /-- </p>
+              <Link> mdismailhosen</Link>
             </div>
             <div className={styles.card_pricing}>
-               <div className={styles.love_status}> <p className={styles.love_icon}>< MdFavoriteBorder  /> </p>{love_react}</div>
+               <div className={love?styles.love_status1:styles.love_status2}> <p className={styles.love_icon}>< FaHeart onClick={()=>setlove(!love)} /> &nbsp;</p>{love_react}</div>
                <div className={styles.pricing}>Price: <p className={styles.pricing_amount}> {card_data.price}৳</p></div>
                <p className={styles.artavailable}><b>{card_data.available}</b></p>
             </div>
