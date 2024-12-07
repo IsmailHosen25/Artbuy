@@ -9,15 +9,13 @@ export default function Login() {
   const formik =useFormik({
     initialValues:{
       email:"",
-      password:"",
-      userType:""
+      password:""
     },
     validationSchema:yup.object({
       email:yup.string()
               .required(" email or Number is required"),
       password:yup.string()
-             .required("password is required"),
-      userType:yup.string().required("select user type")
+             .required("password is required")
     }),onSubmit:async(values)=>{
       const data=JSON.stringify(values)
       const res=await axios.post(`${import.meta.env.VITE_SERVER_URL}/users/login`,data,{
@@ -26,7 +24,17 @@ export default function Login() {
                },
         withCredentials:true
        })
-        navigate("/")
+       if(res.data.request==="Accepted"){
+        window.localStorage.setItem("login","true")
+        window.localStorage.setItem("username",res.data.data.username)
+        window.localStorage.setItem("userType",res.data.data.usertype)
+        navigate(`/profile?username=${res.data.data.username}`)
+      }else if(res.data.request==="Not athurizrd"){
+        alert(res.data.request)
+      }
+      else{
+        alert(res.data.error)
+      }
     }
 })
   return (
@@ -39,11 +47,6 @@ export default function Login() {
                       <p>{formik.errors.email}</p>
                       <input className={styles.input} type="password" name='password' placeholder="password" value={formik.values.password} onChange={formik.handleChange}/>
                       <p>{formik.errors.password}</p>
-                      <div className={styles.radio_btn}>
-                      <label className={styles.select_lable}>Select ... </label>
-                        <input type="radio" value="Artist" name="userType" onChange={formik.handleChange} className={styles.radio}/> Artist
-                        <input type="radio" value="Buyer" name="userType" onChange={formik.handleChange} className={styles.radio}/> Buyer
-                      </div>
                       <button className={styles.btn} type='submit'>Login</button>
                  </form>
                  <p><i>New Member <Link to="/signup">Register</Link> here</i></p>
