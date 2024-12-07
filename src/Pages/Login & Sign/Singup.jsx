@@ -3,6 +3,7 @@ import {Link,useNavigate} from "react-router-dom"
 import {useFormik} from "formik"
 import * as yup from "yup"
 import axios from 'axios'
+import { useEffect } from 'react'
 export default function Singup() {
   const navigate=useNavigate()
   const formik =useFormik({
@@ -11,7 +12,7 @@ export default function Singup() {
       email:"",
       password:"",
       confirm_password:"",
-      userType:""
+      usertype:""
     },
     validationSchema:yup.object({
       username:yup.string()
@@ -23,14 +24,32 @@ export default function Singup() {
       confirm_password:yup.string()
               .required("Confirm Password is required")
               .oneOf([yup.ref("password"),null,'']),
-      userType:yup.string()
+      usertype:yup.string()
       .required("Select as required")
     }),onSubmit:async (values)=>{
           const confirmsignup=confirm(`are you sure ${values.username}?`)
           if(confirmsignup){
-            window.localStorage.setItem("login",true)
-            window.localStorage.setItem("userType",values.userType)
-            navigate("/")
+            const data=JSON.stringify({
+              username:values.username.toLowerCase(),
+              email:values.email,
+              password:values.password,
+              usertype:values.usertype
+            })
+            const res=await axios.post(`${import.meta.env.VITE_SERVER_URL}/users/sign`,data,{
+                   headers:{
+                         "Content-Type":"application/json",
+                          },
+                   withCredentials:true
+                  })
+            if(res.data.message==="Accepted"){
+              window.localStorage.setItem("login","true")
+              window.localStorage.setItem("username",res.data.data.username)
+              window.localStorage.setItem("userType",res.data.data.usertype)
+              navigate(`/profile?username=${res.data.data.username}`)
+            }else{
+              alert(res.data.error)
+            }
+           
           }else{
             console.log(values)
           }
@@ -54,8 +73,8 @@ export default function Singup() {
                       <p>{formik.touched.confirm_password?formik.errors.confirm_password:""}</p>
                       <div className={styles.radio_btn}>
                       <label className={styles.select_lable}>Select ... </label>
-                        <input type="radio" value="Artist" name="userType" onChange={formik.handleChange} className={styles.radio}/> Artist
-                        <input type="radio" value="Buyer" name="userType" onChange={formik.handleChange} className={styles.radio}/> Buyer
+                        <input type="radio" value="Artist" name="usertype" onChange={formik.handleChange} className={styles.radio}/> Artist
+                        <input type="radio" value="Buyer" name="usertype" onChange={formik.handleChange} className={styles.radio}/> Buyer
                       </div>
                       <p>{formik.touched.userType?formik.errors.userType:""}</p>
                       <button  className={styles.btn} type='submit'>Sign Up</button>

@@ -19,8 +19,13 @@ export default function Login() {
              .required("password is required"),
       userType:yup.string().required("select user type")
     }),onSubmit:async(values)=>{
-        window.localStorage.setItem("login",true)
-        window.localStorage.setItem("userType",values.userType)
+      const data=JSON.stringify(values)
+      const res=await axios.post(`${import.meta.env.VITE_SERVER_URL}/users/login`,data,{
+        headers:{
+              "Content-Type":"application/json",
+               },
+        withCredentials:true
+       })
         navigate("/")
     }
 })

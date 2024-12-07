@@ -24,12 +24,13 @@ export default function Nav() {
     navigate("/")
   }
   const profileHandle=()=>{
-    const usertype=window.localStorage.getItem("userType")
-    if(usertype==="Artist")
-    navigate('/profile_artist')
-    else{
-      navigate('/profile_buyer')
-    }
+    const username=window.localStorage.getItem("username")
+    // if(usertype==="Artist")
+    // navigate('/profile_artist')
+    // else{
+    //   navigate('/profile_buyer')
+    // }
+    navigate(`/profile?username=${username}`)
   }
  
   return (<div className={styles.nav}>

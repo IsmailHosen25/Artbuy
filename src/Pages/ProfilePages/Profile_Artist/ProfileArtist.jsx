@@ -1,4 +1,5 @@
 import styles from "./ProfileArtist.module.css"
+import axios from "axios"
 import profile_img from "../../../assets/Hasan.jpg"
 import a41 from "../../../assets/a41.jpg"
 import a42 from "../../../assets/a42.jpeg"
@@ -7,11 +8,11 @@ import a44 from "../../../assets/a44.jpg"
 import a45 from "../../../assets/a45.jpg"
 
 import ArtistInfoFrom from "./ArtistInfoFrom"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import PostArtFrom from "./PostArtFrom"
 import ArtistTimeline from "./ArtistTimeline"
 import { FaClipboardList } from "react-icons/fa6";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ArtistOrder from "./ArtistOrder"
 
 const card_datas=[{
@@ -168,24 +169,42 @@ const orderData=[{
   
 }]
 
-const name="Hasan"
-const username="hasan" 
-const email="ismailhosen1006@gmail.com"
-const mobile="01789828149"
-const bio="An artist is a person engaged in an activity related to creating art, practicing the arts, or demonstrating an art. The most common usage (in both everyday speech and academic discourse) refers to a practitioner in the visual arts only."
-const address="Dhaka,Bangladesh"
-const facebook="https://www.facebook.com/profile.php?id=100075446262873"
-const instagram="https://www.instagram.com/hasan._al_banna/"
-const linkedin="https://www.linkedin.com/in/md-ismail-hosen-81b176276/"
-const twitter=""
 
 export default function ProfileArtist() {
   const navigate =useNavigate()
+  const [name,setname]=useState("")
+  const [username,setusername]=useState("") 
+  const [email,setemail]=useState("")
+  const [mobile,setmobile]=useState("")
+  const [bio,setbio]=useState("")
+  const [address,setaddress]=useState("")
+  const [socialmedia,setsocialmedia]=useState([])
   const [order,setorder]=useState(false)
   const [getProfileImage,setgetProfileImage]=useState("")
   const handleProfileImage=(path)=>{
     setgetProfileImage(path)
   }
+  const {search}=useLocation()
+  const query=new URLSearchParams(search)
+  const getInfo=async()=>{
+    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/users/profile/${query.get("username")}`)
+    if (res.data.request==="Accepted"){
+      setname(res.data.data.name)
+      setusername(res.data.data.username)
+      setemail(res.data.data.email)
+      setmobile(res.data.data.mobile)
+      setaddress(res.data.data.address)
+      setbio(res.data.data.bio)
+      setsocialmedia(res.data.data.socialmedia)
+    }
+    else{
+      navigate("/")
+    }
+  }
+  useEffect(()=>{
+     getInfo()
+  },[])
+
   return (
     <div className={styles.profile_artist}>
       <div className={styles.back_home}>
@@ -218,9 +237,9 @@ export default function ProfileArtist() {
                 <img src={profile_img} className={styles.profile_img}/>
                 </label>
                 <input type="file" accept="image/jpeg, image/png, image/jpg" id="img_input" className={styles.input_for_img} onChange={(e)=>handleProfileImage(e.target.files[0])}/>
-                <button className={styles.logout_btn} onClick={() => {window.localStorage.removeItem("login"); navigate("/");}}>Logout</button>
+                <button className={styles.logout_btn} onClick={() => {window.localStorage.clear(); navigate("/");}}>Logout</button>
               </div>
-                <ArtistInfoFrom name={name} username={username} email={email} mobile={mobile} bio={bio} address={address} facebook={facebook} instagram={instagram} linkedin={linkedin} twitter={twitter}/>
+                <ArtistInfoFrom name={name} username={username} email={email} mobile={mobile} bio={bio} address={address} socialmedia={socialmedia}/>
             </div>
             <PostArtFrom/>
             <div className={styles.timeline}>

@@ -1,12 +1,13 @@
 import styles from "./ArtistInfoFrom.module.css";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { json, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { IoLogoFacebook } from "react-icons/io5";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import axios from "axios";
 
 export default function ArtistInfoFrom({
   name,
@@ -15,27 +16,87 @@ export default function ArtistInfoFrom({
   mobile,
   bio,
   address,
-  facebook,
-  instagram,
-  linkedin,
-  twitter
+  socialmedia
 }) {
+  const [newname,setnewname]=useState(name)
+  const [newmobile,setnewmobile]=useState(mobile)
+  const [newbio,setnewbio]=useState(bio)
+  const [newaddress,setnewaddress]=useState(address)
+  const [facebook,setfacbook]=useState("")
+  const [instagram,setinstagram]=useState("")
+  const [linkedin,setlinkedin]=useState("")
+  const [twitter,settwitter]=useState("")
   const [edit, setedit] = useState(false);
   const formik = useFormik({
     initialValues: {
-      name: name,
-      mobile: mobile,
-      bio: bio,
-      address: address,
+      name: newname,
+      mobile: newmobile,
+      bio: newbio,
+      address: newaddress,
       facebook:facebook,
       instagram:instagram,
       linkedin:linkedin,
       twitter:twitter
     },
     onSubmit: async (values) => {
-      console.log(values);
+      setedit(false)
+      const data=JSON.stringify({
+        "username":username,
+        "name": values.name,
+        "mobile": values.mobile,
+        "bio": values.bio,
+        "address": values.address,
+        "socialmedia":[
+          {
+            "name":"facebook",
+            "url":values.facebook
+          },
+          {
+            "name":"linkedin",
+            "url":values.linkedin
+          },
+          {
+            "name":"instagram",
+            "url":values.instagram
+          },
+          {
+            "name":"twitter",
+            "url":values.twitter
+          }
+        ]
+      })
+      const res=await axios.put(`${import.meta.env.VITE_SERVER_URL}/users/updateinfo`,data,{
+        headers:{
+              "Content-Type":"application/json",
+               },
+        withCredentials:true
+       })
+      if(res.data.request==="Accepted"){
+        window.location.reload();
+      }else{
+        console.log("error-500")
+      }
     },
   });
+ const setalldata= ()=>{
+  for (let i = 0; i < socialmedia.length; i++) {
+    if(socialmedia[i].name==="facebook"){
+      setfacbook(socialmedia[i].url)
+    }
+    else if(socialmedia[i].name==="instagram"){
+      setinstagram(socialmedia[i].url)
+    }
+    else if(socialmedia[i].name==="linkedin"){
+      setlinkedin(socialmedia[i].url)
+    }else{
+        settwitter(socialmedia[i].url)
+    }
+  }
+}
+  useEffect(()=>{
+    setalldata()
+  })
+ 
   return (
     <div className={styles.form_div}>
       <form onSubmit={formik.handleSubmit} className={styles.form_style}>
@@ -156,12 +217,11 @@ export default function ArtistInfoFrom({
           <button
             className={styles.btn}
             type="submit"
-            onClick={() => setedit(false)}
           >
             Save
           </button>
         ) : (
-          <div className={styles.edit_btn} onClick={() => setedit(true)}>
+          <div className={styles.edit_btn} onClick={()=>setedit(true)}>
             Edit <MdOutlineModeEditOutline />
           </div>
         )}
