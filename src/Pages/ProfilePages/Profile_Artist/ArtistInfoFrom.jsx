@@ -213,13 +213,17 @@ export default function ArtistInfoFrom({
         <Link className={`${styles.link} ${styles.twitter}`} to={twitter} target="_black"><FaTwitter/></Link>
         {edit?<input type="text" name="twitter" placeholder="Add twitter link" value={formik.values.twitter} onChange={formik.handleChange}/>:""}
       </div>
-        {edit ? (
+        {edit ? (<div className={styles.save_back_btn}>
           <button
             className={styles.btn}
             type="submit"
           >
             Save
           </button>
+          <button className={styles.btn} onClick={()=>setedit(false)}>
+          Back 
+        </button>
+        </div>
         ) : (
           <div className={styles.edit_btn} onClick={()=>setedit(true)}>
             Edit <MdOutlineModeEditOutline />

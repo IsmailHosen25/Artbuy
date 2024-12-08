@@ -180,14 +180,26 @@ export default function ProfileArtist() {
   const [address,setaddress]=useState("")
   const [socialmedia,setsocialmedia]=useState([])
   const [order,setorder]=useState(false)
-  const [getProfileImage,setgetProfileImage]=useState("")
-  const handleProfileImage=(path)=>{
-    setgetProfileImage(path)
+  const [ProfileImage,setProfileImage]=useState([])
+  const handleProfileImage=async(path)=>{
+    const formdata=new FormData()
+    formdata.append("file",path)
+    const res=await axios.put(`${import.meta.env.VITE_SERVER_URL}/users/updateprofileimg`,formdata,{withCredentials:true})
+    if(res.data.request==="Accepted"){
+      window.location.reload()
+    }else{
+      alert("somthing wrong, please try agian")
+    }
   }
   const {search}=useLocation()
   const query=new URLSearchParams(search)
   const getInfo=async()=>{
-    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/users/profile/${query.get("username")}`)
+    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/users/profile/${query.get("username")}`,{
+      headers:{
+            "Content-Type":"application/json",
+             },
+      withCredentials:true
+     })
     if (res.data.request==="Accepted"){
       setname(res.data.data.name)
       setusername(res.data.data.username)
@@ -196,6 +208,7 @@ export default function ProfileArtist() {
       setaddress(res.data.data.address)
       setbio(res.data.data.bio)
       setsocialmedia(res.data.data.socialmedia)
+      setProfileImage(res.data.data.file)
     }
     else{
       navigate("/")
@@ -204,7 +217,6 @@ export default function ProfileArtist() {
   useEffect(()=>{
      getInfo()
   },[])
-
   return (
     <div className={styles.profile_artist}>
       <div className={styles.back_home}>
@@ -234,7 +246,7 @@ export default function ProfileArtist() {
             <div className={styles.profile_info}>
               <div>
                 <label htmlFor="img_input">
-                <img src={profile_img} className={styles.profile_img}/>
+                <img src={`${import.meta.env.VITE_SERVER_URL}/users/img?name=${ProfileImage.filename}`} className={styles.profile_img}/>
                 </label>
                 <input type="file" accept="image/jpeg, image/png, image/jpg" id="img_input" className={styles.input_for_img} onChange={(e)=>handleProfileImage(e.target.files[0])}/>
                 <button className={styles.logout_btn} onClick={() => {window.localStorage.clear(); navigate("/");}}>Logout</button>

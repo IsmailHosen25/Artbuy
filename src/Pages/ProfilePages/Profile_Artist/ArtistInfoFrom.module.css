@@ -81,6 +81,12 @@
     font-size: 1.3rem;
     padding: 0rem 0.5rem;
 }
+.save_back_btn{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+}
 .btn{
     font-size:1.7rem ;
     padding: 0.1rem 0.5rem;
