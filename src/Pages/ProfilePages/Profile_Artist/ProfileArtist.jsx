@@ -1,6 +1,5 @@
 import styles from "./ProfileArtist.module.css"
 import axios from "axios"
-import profile_img from "../../../assets/Hasan.jpg"
 import a41 from "../../../assets/a41.jpg"
 import a42 from "../../../assets/a42.jpeg"
 import a43 from "../../../assets/a43.jpeg"
@@ -181,6 +180,7 @@ export default function ProfileArtist() {
   const [socialmedia,setsocialmedia]=useState([])
   const [order,setorder]=useState(false)
   const [ProfileImage,setProfileImage]=useState([])
+  const [cardata,setcarddata]=useState([])
   const handleProfileImage=async(path)=>{
     const formdata=new FormData()
     formdata.append("file",path)
@@ -211,11 +211,32 @@ export default function ProfileArtist() {
       setProfileImage(res.data.data.file)
     }
     else{
+      window.localStorage.clear()
       navigate("/")
     }
   }
+  const getarts=async()=>{
+    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/artist/getarts/${query.get("username")}`,{
+      headers:{
+            "Content-Type":"application/json",
+             },
+      withCredentials:true
+     })
+     if(res.data.request==="Accepted"){
+            await setcarddata(res.data.data)
+     }
+     else if(res.data.request==="token expired"){
+              window.localStorage.clear()
+              navigate("/login")
+     }
+     else{
+      window.localStorage.clear()
+      navigate("/login")
+     }
+  }
   useEffect(()=>{
      getInfo()
+     getarts()
   },[])
   return (
     <div className={styles.profile_artist}>
@@ -260,7 +281,7 @@ export default function ProfileArtist() {
                    <div className={styles.timeline_title_desgin}></div>
             </div>
             <div className={styles.timeline_card}>
-                 {card_datas.map((item,i)=> <ArtistTimeline card_data={item} key={i}/>)}
+                 {cardata.map((item,i)=> <ArtistTimeline card_data={item} key={i}/>)}
             </div>
             </div>
         </>

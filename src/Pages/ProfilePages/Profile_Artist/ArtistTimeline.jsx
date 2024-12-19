@@ -4,36 +4,47 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import { FaTrashCan } from "react-icons/fa6";
 import { useFormik } from 'formik';
+import axios from 'axios';
 export default function ArtistTimeline({card_data}) {
     const formik =useFormik({
         initialValues:{
+          id:card_data._id,
           name:card_data.name,
           price:card_data.price,
           available:card_data.available,
-          bio:card_data.bio
+          about:card_data.about
           
         },onSubmit:async (values)=>{
-          setedit(false)
-          console.log(values)
+        const res=await axios.put(`${import.meta.env.VITE_SERVER_URL}/artist//updateart`,values,{withCredentials:true})
+        if(res.data.request==="Accepted"){
+          window.location.reload()
+        }else{
+          alert(res.data.error)
+        }
         } 
       })
     let love_react=0
-    if(card_data.like<1000){
-     love_react=card_data.like
-    }else if(card_data.like<1000000){
-     love_react=card_data.like/1000 + "K"
+    if(card_data.likes.length<1000){
+     love_react=card_data.likes.length
+    }else if(card_data.likes.length<1000000){
+     love_react=card_data.likes.length/1000 + "K"
     }
     else{
-     love_react=card_data.like/1000000 +"M"
+     love_react=card_data.likes.length/1000000 +"M"
     }
     const [edit,setedit]=useState(false)
-   const  DeleteNow=()=>{
-         console.log("hello")
+   const  DeleteNow=async()=>{
+        const res=await axios.delete(`${import.meta.env.VITE_SERVER_URL}/artist/deleteart/${card_data._id}`,{withCredentials:true})
+        if(res.data.request==="Accepted"){
+          window.location.reload()
+        }else{
+          alert(res.data.error)
+        }
     }
   return (
     <div className={styles.card}>
        <div className={styles.img_div}>
-        <img src={card_data.img} className={styles.img}/>
+        <img src={`${import.meta.env.VITE_SERVER_URL}/users/img?name=${card_data.file.filename}`} className={styles.img}/>
        </div>
        <form className={styles.card_bio} onSubmit={formik.handleSubmit}>
           <div className={styles.card_pricing_buying}>
@@ -46,7 +57,7 @@ export default function ArtistTimeline({card_data}) {
             <div className={styles.card_pricing}>
                <div className={styles.love_status}> <p className={styles.love_icon}>< MdFavoriteBorder  /> </p>{love_react}</div>
                <div className={styles.pricing}>Price: 
-                {edit? <input type='number' placeholder='Price' value={formik.values.price} onChange={formik.handleChange}/>
+                {edit? <input type='number' placeholder='Price' name='price' value={formik.values.price} onChange={formik.handleChange}/>
                 :
                 <p className={styles.pricing_amount}> {card_data.price}৳</p>
                 }
@@ -72,9 +83,9 @@ export default function ArtistTimeline({card_data}) {
             </div>
           </div>
           <div className={styles.cart_detiels}>
-            {edit?<textarea rows="2" cols="90" name="bio" className={styles.detiels_input} value={formik.values.bio} onChange={formik.handleChange}/>
+            {edit?<textarea rows="2" cols="90" name="about" className={styles.detiels_input} value={formik.values.about} onChange={formik.handleChange}/>
             :
-              <p>{card_data.bio}</p>
+              <p>{card_data.about}</p>
             }
           </div>
        </form>

@@ -4,6 +4,7 @@ import input_img_icon from "../../../assets/input_img_icon.png"
 
 import { useFormik } from "formik"
 import * as yup from "yup"
+import axios from 'axios'
 
 export default function PostArtFrom() {
 
@@ -32,7 +33,14 @@ export default function PostArtFrom() {
         }),onSubmit:async (values)=>{
             const confirmation=confirm("are you sure?")
             if(confirmation){
-                console.log(values)
+                const formdata=new FormData()
+                formdata.append("artimg",values.artimg)
+                formdata.append("name", values.name)
+                formdata.append("price",values.price)
+                formdata.append("available",values.available)
+                formdata.append("category",values.category)
+                formdata.append("about",values.about)
+                const res=await axios.post(`${import.meta.env.VITE_SERVER_URL}/artist/addarts`,formdata,{withCredentials:true})
                 window.location.reload(false);
             }
         }

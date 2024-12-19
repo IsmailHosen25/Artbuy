@@ -41,13 +41,20 @@ export default function Singup() {
                           },
                    withCredentials:true
                   })
-            if(res.data.message==="Accepted"){
+            if(res.data.request==="Accepted"){
               window.localStorage.setItem("login","true")
               window.localStorage.setItem("username",res.data.data.username)
               window.localStorage.setItem("userType",res.data.data.usertype)
               navigate(`/profile?username=${res.data.data.username}`)
-            }else{
-              alert(res.data.error)
+            }else if(res.data.request==="User name already exist"){
+              alert("username already exist! use another username please")
+            }
+            else if(res.data.request==="User already exist"){
+               alert("User already exist")
+               navigate("/login")
+            }
+            else{
+              alert("somting wrong, please try agian")
             }
            
           }else{
