@@ -10,6 +10,7 @@ import a11 from "../../assets/a11.jpg"
 import { IoSearchSharp } from "react-icons/io5";
 import Nav from "../Global_Components/Nav/Nav";
 import Footer from "../Global_Components/Footer/Footer";
+import axios from "axios"
 
 const card_datas=[{
   "img":a11,
@@ -95,11 +96,25 @@ const card_datas=[{
   "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
 }]
 export default function Home() {
+  const [card_data,setcard_data]=useState([])
   const [search ,setsearch]=useState("")
   const [category,setcategory]=useState("")
   const filter=(data)=>{
     return data.filter(item=>item.name.toLowerCase().includes(search.toLowerCase())&&item.category.includes(category))
   }
+  const getdata= async()=>{
+    const res=await axios.get(`${import.meta.env.VITE_SERVER_URL}/users/getallarts`,{withCredentials:true})
+    if(res.data.request==="Accepted"){
+           setcard_data(res.data.data)
+           console.log(res.data.data)
+    }else{
+      console.log(res.data)
+    }
+
+  }
+  useEffect(()=>{
+       getdata()
+  },[])
   return (
     <>
     <Nav/>
@@ -126,7 +141,7 @@ export default function Home() {
     </div>
       <div className={styles.store}>
         {
-          filter(card_datas).map((item,i)=><ProductsCard key={i} card_data={item}/>)
+          filter(card_data).map((item,i)=><ProductsCard key={i} card_data={item}/>)
         }
       </div>
       <Footer/>
