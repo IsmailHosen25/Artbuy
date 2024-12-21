@@ -1,4 +1,4 @@
-import styles from "./ProfileArtist.module.css"
+import styles from "./Profile.module.css"
 import axios from "axios"
 import a41 from "../../../assets/a41.jpg"
 import a42 from "../../../assets/a42.jpeg"
@@ -6,14 +6,14 @@ import a43 from "../../../assets/a43.jpeg"
 import a44 from "../../../assets/a44.jpg"
 import a45 from "../../../assets/a45.jpg"
 
-import ArtistInfoFrom from "./ArtistInfoFrom"
+import ProfileInfoFrom from "./ProfileInfoFrom"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import PostArtFrom from "./PostArtFrom"
 import ArtistTimeline from "./ArtistTimeline"
 import { FaClipboardList } from "react-icons/fa6";
 import { useEffect, useState } from "react"
 import ArtistOrder from "./ArtistOrder"
-
+import ProfileOrder from "../../Global_Components/OrderForProfile/ProfileOrder"
 const card_datas=[{
   "img":a41,
   "quantity":1,
@@ -169,7 +169,8 @@ const orderData=[{
 }]
 
 
-export default function ProfileArtist() {
+export default function Profile() {
+  const userType=window.localStorage.getItem("userType")
   const navigate =useNavigate()
   const [name,setname]=useState("")
   const [username,setusername]=useState("") 
@@ -249,8 +250,17 @@ export default function ProfileArtist() {
         <>
         <p>Back to&ensp;</p>
         <Link to="/" className={styles.bth_link}> Home</Link>
-        <p>&ensp;/&ensp;</p>
-        <p className={styles.artist_order} onClick={()=>setorder(true)}> <FaClipboardList/> Order</p>
+        {userType==="Artist"?<>
+        
+          <p>&ensp;/&ensp;</p>
+          <p className={styles.artist_order} onClick={()=>setorder(true)}> <FaClipboardList/> Order</p>
+        
+        </>
+        
+        
+        :
+        ""}
+       
         </>
         
         }
@@ -263,6 +273,8 @@ export default function ProfileArtist() {
 
       
       :
+
+
         <>
             <div className={styles.profile_info}>
               <div>
@@ -272,9 +284,15 @@ export default function ProfileArtist() {
                 <input type="file" accept="image/jpeg, image/png, image/jpg" id="img_input" className={styles.input_for_img} onChange={(e)=>handleProfileImage(e.target.files[0])}/>
                 <button className={styles.logout_btn} onClick={() => {window.localStorage.clear(); navigate("/");}}>Logout</button>
               </div>
-                <ArtistInfoFrom name={name} username={username} email={email} mobile={mobile} bio={bio} address={address} socialmedia={socialmedia}/>
+                <ProfileInfoFrom name={name} username={username} email={email} mobile={mobile} bio={bio} address={address} socialmedia={socialmedia}/>
             </div>
-            <PostArtFrom/>
+
+
+
+            {
+              userType==="Artist"?
+              <>
+             <PostArtFrom/>
             <div className={styles.timeline}>
             <div className={styles.timeline_title}>
                    <p className={styles.timeline_title_p}>TimeLine </p>
@@ -284,6 +302,18 @@ export default function ProfileArtist() {
                  {cardata.map((item,i)=> <ArtistTimeline card_data={item} key={i}/>)}
             </div>
             </div>
+              </>
+              
+              
+              :
+              
+              
+              <>
+              <div className={styles.profile_order}>
+                      {orderData.map((item,i)=><ProfileOrder key={i} orderData={item}/>)}
+              </div></>
+            }
+
         </>
       
       }

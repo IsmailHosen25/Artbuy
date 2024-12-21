@@ -1,4 +1,4 @@
-import styles from "./ArtistInfoFrom.module.css";
+import styles from "./ProfileInfoFrom.module.css";
 import { useFormik } from "formik";
 import { json, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import axios from "axios";
 
-export default function ArtistInfoFrom({
+export default function ProfileInfoFrom({
   name,
   username,
   email,
