@@ -106,7 +106,6 @@ export default function Home() {
     const res=await axios.get(`${import.meta.env.VITE_SERVER_URL}/users/getallarts`,{withCredentials:true})
     if(res.data.request==="Accepted"){
            setcard_data(res.data.data)
-           console.log(res.data.data)
     }else{
       console.log(res.data)
     }

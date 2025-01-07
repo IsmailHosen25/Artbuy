@@ -6,6 +6,7 @@ import * as yup from "yup"
 import { useState } from 'react'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { GrSend } from "react-icons/gr";
+import axios from 'axios'
 
 export default function Cart() {
 
@@ -15,10 +16,15 @@ export default function Cart() {
 
   const {cartitem,setcartitem}=useCartContext()
   const handlecheckout=()=>{
-     setchform(true)
+    if(window.localStorage.getItem("login")){
+      setchform(true)
+    }
+    else{
+      alert("login first")
+      navigate("/login")
+    }
+
   }
-
-
   const formik=useFormik({
     initialValues:{
             address:"",
@@ -26,13 +32,31 @@ export default function Cart() {
     },validationSchema:yup.object({
       address:yup.string()
               .required("address is required"),
-      number:yup.number()
+      number:yup.number().min(11,"must be number")
                 .required("Number is required"),
 })
-    , onSubmit:(values)=>{
-      alert("submitted successfully")
-      setcartitem([])
-      navigate("/")
+    , onSubmit:async(values)=>{
+      const login=window.localStorage.getItem("login")
+      if(login){
+        const data={
+          "address":values.address,
+          "mobile":values.number,
+          "arts":cartitem
+        }
+        const res=await axios.post(`${import.meta.env.VITE_SERVER_URL}/buyer/addorder`,data,{withCredentials:true})
+        if(res.data.request==="Accepted"){
+          alert("submitted successfully")
+          setcartitem([])
+          navigate("/")
+        }
+        else{
+          alert("somthing wrong, please try again")
+        }
+      }
+      else{
+        navigate("/")
+      }
+  
     }
     
   })
@@ -68,7 +92,7 @@ export default function Cart() {
           {cartitem.map((item,i)=>
           
           <div key={i} className={styles.itemdata}>
-            <img src={item.img} className={styles.ptable}/>
+            <img src={`${import.meta.env.VITE_SERVER_URL}/users/img?name=${item.file.filename}`} className={styles.ptable}/>
             <h1 className={`${styles.ptable} ${styles.nodisp}`}>{item.name}</h1>
             <p className={styles.ptable}>${item.price}</p>
             <div className={`${styles.quantity} ${styles.ptable}`}>
