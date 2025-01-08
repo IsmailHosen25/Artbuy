@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./ProfileOrder.module.css"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-export default function ProfileOrder({orderData,reload}) {
+export default function ProfileOrder({orderData}) {
   const cancelorder=async()=>{
     const confirmation=confirm("are you sure?")
     const data={
@@ -12,7 +12,7 @@ export default function ProfileOrder({orderData,reload}) {
     if(confirmation){
       const res= axios.put(`${import.meta.env.VITE_SERVER_URL}/buyer/orderstatusudt/${orderData._id}`,data,{withCredentials:true})
       if(res.data.request==="Accepted"){
-        reload()
+        window.location.reload()
       }
     }
   }

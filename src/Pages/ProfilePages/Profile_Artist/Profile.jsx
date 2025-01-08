@@ -79,6 +79,9 @@ export default function Profile() {
      }
   }
   const getorderhistory=async()=>{
+       if(window.localStorage.getItem("userType")==="Buyer"){
+
+
         const res=await axios.get(`${import.meta.env.VITE_SERVER_URL}/buyer/getbuyerorderhistory`,
           {
             headers:{
@@ -89,12 +92,26 @@ export default function Profile() {
 
         )
         if(res.data.request==="Accepted"){
-               setorderData(res.data.data)
-        }
-  }
-  const reload=()=>{
-    window.location.reload()
-    console.log("hello")
+          setorderData(res.data.data)
+         }
+
+
+       }else{
+        const res=await axios.get(`${import.meta.env.VITE_SERVER_URL}/artist/getartistorderhistory`,
+          {
+            headers:{
+                  "Content-Type":"application/json",
+                   },
+            withCredentials:true
+           }
+
+        )
+        if(res.data.request==="Accepted"){
+          setorderData(res.data.data)
+         }
+       }
+       
+        
   }
   useEffect(()=>{
      getInfo()
@@ -172,7 +189,7 @@ export default function Profile() {
               
               <>
               <div className={styles.profile_order}>
-                      {orderData.map((item,i)=><ProfileOrder key={i} orderData={item} reload={reload}/>)}
+                      {orderData.map((item,i)=><ProfileOrder key={i} orderData={item}/>)}
               </div></>
             }
 

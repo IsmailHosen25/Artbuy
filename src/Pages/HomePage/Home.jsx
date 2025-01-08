@@ -1,100 +1,12 @@
 import ProductsCard from "../Global_Components/ProductsCard/ProductsCard"
 import styles from "./Home.module.css"
 import React, { useEffect, useState } from 'react'
-import a41 from "../../assets/a41.jpg"
-import a42 from "../../assets/a42.jpeg"
-import a43 from "../../assets/a43.jpeg"
-import a44 from "../../assets/a44.jpg"
-import a45 from "../../assets/a45.jpg"
-import a11 from "../../assets/a11.jpg"
 import { IoSearchSharp } from "react-icons/io5";
 import Nav from "../Global_Components/Nav/Nav";
 import Footer from "../Global_Components/Footer/Footer";
 import axios from "axios"
 
-const card_datas=[{
-  "img":a11,
-  "quantity":1,
-  "name":"mona Lisa",
-  "category":"Landscape",
-  "like":230000,
-  "price":790,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-  {
-  "img":a42,
-  "quantity":1,
-  "category":"Landscape",
-  "name":"Starry Night",
-  "like":999,
-  "price":250,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a43,
-  "quantity":1,
-  "category":"Fashion",
-  "name":"beauty girl",
-  "like":20000,
-  "price":290,
-  "available":"Not Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a44,
-  "quantity":1,
-  "name":"smoking man",
-  "category":"Landscape",
-  "like":1000,
-  "price":2500,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-{ "img":a45,
-  "quantity":1,
-  "name":"Mona Lisa",
-  "category":"Landscape",
-  "like":2000000,
-  "price":3680,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a42,
-  "quantity":1,
-  "name":"Starry Night",
-  "category":"Animals",
-  "like":1000,
-  "price":2500,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-{ "img":a43,
-  "quantity":1,
-  "name":"beauty girl",
-  "category":"Landscape",
-  "like":2000000,
-  "price":3680,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a44,
-  "quantity":1,
-  "name":"smoking man",
-  "category":"Landscape",
-  "like":1000,
-  "price":2500,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-{ "img":a41,
-  "quantity":1,
-  "name":"Mona Lisa",
-  "category":"Fashion",
-  "like":2000000,
-  "price":3680,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-}]
+
 export default function Home() {
   const [card_data,setcard_data]=useState([])
   const [search ,setsearch]=useState("")
