@@ -19,11 +19,19 @@ export default function ProductsCard({card_data}) {
 
 
      const Buynow=()=>{
-      setcartitem([...cartitem,{...card_data}])
-      navigate("/cart")
+      if(window.localStorage.getItem("userType")==="Artist"){
+        alert("you can not buy using this id, use another id")
+      }else{
+        setcartitem([...cartitem,{...card_data}])
+        navigate("/cart")
+      }
      }
      const AddToCart=()=>{
+      if(window.localStorage.getItem("userType")==="Artist"){
+        alert("you can not buy using this id, use another id")
+      }else{
       setcartitem([...cartitem,{...card_data}])
+      }
      }
      const [love,setlove]=useState(false)
   return (

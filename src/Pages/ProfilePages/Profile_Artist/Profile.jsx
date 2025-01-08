@@ -1,10 +1,5 @@
 import styles from "./Profile.module.css"
 import axios from "axios"
-import a41 from "../../../assets/a41.jpg"
-import a42 from "../../../assets/a42.jpeg"
-import a43 from "../../../assets/a43.jpeg"
-import a44 from "../../../assets/a44.jpg"
-import a45 from "../../../assets/a45.jpg"
 
 import ProfileInfoFrom from "./ProfileInfoFrom"
 import { Link, useLocation, useNavigate } from "react-router-dom"
@@ -14,164 +9,12 @@ import { FaClipboardList } from "react-icons/fa6";
 import { useEffect, useState } from "react"
 import ArtistOrder from "./ArtistOrder"
 import ProfileOrder from "../../Global_Components/OrderForProfile/ProfileOrder"
-const card_datas=[{
-  "img":a41,
-  "quantity":1,
-  "name":"mona Lisa",
-  "like":230000,
-  "price":790,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-  {
-  "img":a42,
-  "quantity":1,
-  "name":"Starry Night",
-  "like":999,
-  "price":250,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a43,
-  "quantity":1,
-  "name":"beauty girl",
-  "like":20000,
-  "price":290,
-  "available":"Not Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a44,
-  "name":"smoking man",
-  "like":1000,
-  "price":2500,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-{ "img":a45,
-  "name":"mona Lisa",
-  "like":2000000,
-  "price":3680,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a42,
-  "name":"Starry Night",
-  "like":1000,
-  "price":2500,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-{ "img":a43,
-  "name":"beauty girl",
-  "like":2000000,
-  "price":3680,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},{
-  "img":a44,
-  "name":"smoking man",
-  "like":1000,
-  "price":2500,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-},
-{ "img":a41,
-  "name":"mona Lisa",
-  "like":2000000,
-  "price":3680,
-  "available":"Available",
-  "bio":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae quam libero autem eius."
-}]
-
-const orderData=[{
-  "orderId":"106033B897E",
-  "img":a41,
-  "quantity":1,
-  "name":"mona Lisa",
-  "price":790,
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"waiting for Confirmation"
-  
-  
-},
-  {
-  "orderId":"106033B897E",
-  "img":a42,
-  "quantity":1,
-  "name":"Starry Night",
-  "like":999,
-  "price":250,
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"Confirmed"
-  
-},{
-  "orderId":"106033B897E",
-  "img":a43,
-  "quantity":1,
-  "name":"beauty girl",
-  "like":20000,
-  "price":290,
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"waiting for Confirmation"
-  
-},{
-  "orderId":"106033B897E",
-  "img":a44,
-  "name":"smoking man",
-  "like":1000,
-  "price":2500,
-  "mobile":"0178*****48",
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"Confirmed"
-  
-},
-{ 
-  "orderId":"106033B897E",
-  "img":a41,
-  "name":"mona Lisa",
-  "like":2000000,
-  "price":3680,
-  "mobile":"0178*****48",
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"Assigned to rider"
-  
-},{
-  "orderId":"106033B897E",
-  "img":a42,
-  "name":"Starry Night",
-  "like":1000,
-  "price":2500,
-  "mobile":"0178*****48",
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"canceled"
-  
-},
-{ 
-  "orderId":"106033B897E",
-  "img":a43,
-  "name":"beauty girl",
-  "like":2000000,
-  "price":3680,
-  "mobile":"0178*****48",
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"Confirmed"
-  
-},{
-  "orderId":"106033B897E",
-  "img":a44,
-  "name":"smoking man",
-  "like":1000,
-  "price":2500,
-  "mobile":"0178*****48",
-  "address":"16501 Collins Ave, Sunny lsles Beach, FL 33160, United States",
-  "status":"delivered"
-  
-}]
 
 
 export default function Profile() {
   const userType=window.localStorage.getItem("userType")
   const navigate =useNavigate()
+  const [orderData,setorderData]=useState([])
   const [name,setname]=useState("")
   const [username,setusername]=useState("") 
   const [email,setemail]=useState("")
@@ -235,9 +78,28 @@ export default function Profile() {
       navigate("/login")
      }
   }
+  const getorderhistory=async()=>{
+        const res=await axios.get(`${import.meta.env.VITE_SERVER_URL}/buyer/getbuyerorderhistory`,
+          {
+            headers:{
+                  "Content-Type":"application/json",
+                   },
+            withCredentials:true
+           }
+
+        )
+        if(res.data.request==="Accepted"){
+               setorderData(res.data.data)
+        }
+  }
+  const reload=()=>{
+    window.location.reload()
+    console.log("hello")
+  }
   useEffect(()=>{
      getInfo()
      getarts()
+     getorderhistory()
   },[])
   return (
     <div className={styles.profile_artist}>
@@ -310,7 +172,7 @@ export default function Profile() {
               
               <>
               <div className={styles.profile_order}>
-                      {orderData.map((item,i)=><ProfileOrder key={i} orderData={item}/>)}
+                      {orderData.map((item,i)=><ProfileOrder key={i} orderData={item} reload={reload}/>)}
               </div></>
             }
 
