@@ -1,38 +1,53 @@
-# 🎨 ArtBuy: Full-Stack E-commerce Marketplace
+# 🖼️ ArtBuy — Full-Stack E-Commerce Marketplace
 
-A complete digital marketplace where artists can list work and users can securely purchase unique art pieces. Developed as a full-stack MERN (MongoDB, Express, React, Node.js) application to demonstrate complex system integration and secure transactional logic.
+**ArtBuy** is a comprehensive full-stack web application that enables users to buy and sell artworks seamlessly.  
+It demonstrates proficiency in **frontend–backend integration**, **secure user authentication**, and **database-driven system design** — delivering a complete e-commerce experience from end to end.
 
-## ✨ Key Features
+---
 
-* **Secure Authentication:** User role management (Buyer/Seller/Admin) implemented using **JWT (JSON Web Tokens)** for secure, stateful sessions and resource control.
-* **Transactional Flow:** Complete **shopping cart and checkout process**, including **inventory management** and order status tracking. Designed to handle internal payment validation and mock transaction finalization.
-* **RESTful API:** Developed a robust backend API using **Node.js/Express** to handle all CRUD operations for Products, Users, and Orders efficiently.
-* **Dynamic UI:** Built with **React** for a fast, responsive user experience, featuring dynamic product filtering and searching.
+## 🚀 Key Features
 
-## 🛠️ Tech Stack
+- **User Authentication:** Secure registration and login system.  
+- **Role Management:** Separate functionalities for buyers, sellers, and admins.  
+- **Product Management:** Add, update, delete, and display artwork listings.  
+- **Search & Browse:** View artworks by category, keyword, or price range.  
+- **Shopping Cart & Orders:** Manage cart items and confirm purchases.  
+- **Secure Transactions:** Validations and secure payment workflow.  
+- **Responsive Interface:** Clean, intuitive, and mobile-friendly design.
 
-* **Frontend:** React, React Router, CSS/Tailwind
-* **Backend:** Node.js, Express.js
-* **Database:** [MongoDB/PostgreSQL/MySQL]
+---
 
-## 🚀 How to Run Locally
+## 🧰 Technology Stack
 
-1.  **Clone the repositories:**
-    ```bash
-    git clone [https://github.com/IsmailHosen25/artbuy_server.git](https://github.com/IsmailHosen25/artbuy_server.git)
-    git clone [https://github.com/IsmailHosen25/](https://github.com/IsmailHosen25/)[artbuy_client_repo_name].git
-    ```
-2.  **Server Setup (artbuy\_server):**
-    ```bash
-    cd artbuy_server
-    npm install
-    # Create a .env file and add: DB_URI=[Your DB Connection], JWT_SECRET=[Your Secret Key]
-    npm start
-    ```
-3.  **Client Setup ([artbuy\_client\_repo\_name]):**
-    ```bash
-    cd [artbuy_client_repo_name]
-    npm install
-    # Create a .env file and add: REACT_APP_API_URL=http://localhost:5000
-    npm start
-    ```
+| Layer | Technologies |
+|-------|---------------|
+| **Frontend** | React.js |
+| **Backend** | Node.js, Express.js |
+| **Database** | MySQL / MongoDB (depending on your setup) |
+| **Authentication** | JWT, bcrypt |
+| **API Communication** | RESTful APIs, Axios |
+| **Other Tools** | npm, environment variables (.env) for secure configs |
+
+---
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+Ensure you have installed:
+- Node.js and npm  
+- Database (MySQL / MongoDB) configured and running  
+
+### Steps
+```bash
+# Clone the repository
+git clone https://github.com/IsmailHosen25/ArtBuy.git
+cd ArtBuy
+
+# Install dependencies
+npm install
+
+# Configure environment variables
+# (Example: .env file with DB credentials, JWT secret, etc.)
+
+# Start the application
+npm run dev
